@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,22 +675,23 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Keepify" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="103" y="-409"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="Keepify" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="700" height="500"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-			<connections>
+                        <value key="minSize" type="size" width="400" height="300"/>
+                        <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
@@ -698,20 +701,66 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="111" y="-48"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Keepify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="698" height="408"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="q1A-s9-Plk">
+                                <rect key="frame" x="0.0" y="0.0" width="698" height="408"/>
+                            </visualEffectView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="T48-5y-cLf" customClass="CustomView" customModule="Keepify" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="344" width="698" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="LRS-dr-fNh"/>
+                                </constraints>
+                            </customView>
+                            <wkWebView wantsLayer="YES" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bZP-76-28h" customClass="CustomWebView" customModule="Keepify" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="698" height="408"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="bN9-ge-osC" customClass="CustomView" customModule="Keepify" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="344" width="686" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Oog-wW-Qst"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="T48-5y-cLf" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="1xU-Lz-eKL"/>
+                            <constraint firstItem="bZP-76-28h" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="3JB-bm-na5"/>
+                            <constraint firstItem="bN9-ge-osC" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="3Ow-Dp-9MY"/>
+                            <constraint firstAttribute="bottom" secondItem="bZP-76-28h" secondAttribute="bottom" id="4cU-Yw-JXs"/>
+                            <constraint firstAttribute="trailing" secondItem="q1A-s9-Plk" secondAttribute="trailing" id="88c-BY-dxn"/>
+                            <constraint firstAttribute="trailing" secondItem="T48-5y-cLf" secondAttribute="trailing" id="KcY-Se-N5h"/>
+                            <constraint firstAttribute="bottom" secondItem="q1A-s9-Plk" secondAttribute="bottom" id="N8F-Gf-UFo"/>
+                            <constraint firstItem="q1A-s9-Plk" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Oe3-CM-8UD"/>
+                            <constraint firstAttribute="trailing" secondItem="bZP-76-28h" secondAttribute="trailing" id="gr0-iB-P2n"/>
+                            <constraint firstItem="q1A-s9-Plk" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="hwy-9m-eez"/>
+                            <constraint firstItem="bN9-ge-osC" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="lrS-d1-lvX"/>
+                            <constraint firstItem="T48-5y-cLf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="mLM-ji-55I"/>
+                            <constraint firstAttribute="trailing" secondItem="bN9-ge-osC" secondAttribute="trailing" constant="12" id="nun-Qm-IaM"/>
+                            <constraint firstItem="q1A-s9-Plk" firstAttribute="top" secondItem="bN9-ge-osC" secondAttribute="top" id="oAc-JL-T2K"/>
+                            <constraint firstItem="bZP-76-28h" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="vza-g3-qjc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="customView" destination="bN9-ge-osC" id="KYV-dA-DmK"/>
+                        <outlet property="startTitleView" destination="T48-5y-cLf" id="3NT-Rd-DT0"/>
+                        <outlet property="webView" destination="bZP-76-28h" id="hXO-be-a5x"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="102" y="683"/>
         </scene>
     </scenes>
 </document>

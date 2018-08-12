@@ -1,0 +1,15 @@
+* {
+    -webkit-user-select: none;
+}
+
+input, textarea {
+    -webkit-user-select: text;
+}
+
+body {
+    background: transparent !important;
+}
+
+.gb_Dd {
+    padding-left: 80px !important;
+}

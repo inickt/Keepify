@@ -11,6 +11,9 @@
 		0191343420DBFE1C008BD758 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0191343320DBFE1C008BD758 /* ViewController.swift */; };
 		0191343620DBFE1D008BD758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0191343520DBFE1D008BD758 /* Assets.xcassets */; };
 		0191343920DBFE1D008BD758 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0191343720DBFE1D008BD758 /* Main.storyboard */; };
+		0191344220DBFEBE008BD758 /* CustomWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0191344120DBFEBE008BD758 /* CustomWebView.swift */; };
+		0191344420DC03C2008BD758 /* custom.css in Resources */ = {isa = PBXBuildFile; fileRef = 0191344320DC03C2008BD758 /* custom.css */; };
+		0191344620DC41EC008BD758 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0191344520DC41EC008BD758 /* CustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		0191343820DBFE1D008BD758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0191343A20DBFE1D008BD758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0191343B20DBFE1D008BD758 /* Keepify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Keepify.entitlements; sourceTree = "<group>"; };
+		0191344120DBFEBE008BD758 /* CustomWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWebView.swift; sourceTree = "<group>"; };
+		0191344320DC03C2008BD758 /* custom.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = custom.css; sourceTree = "<group>"; };
+		0191344520DC41EC008BD758 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				0191343720DBFE1D008BD758 /* Main.storyboard */,
 				0191343A20DBFE1D008BD758 /* Info.plist */,
 				0191343B20DBFE1D008BD758 /* Keepify.entitlements */,
+				0191344120DBFEBE008BD758 /* CustomWebView.swift */,
+				0191344320DC03C2008BD758 /* custom.css */,
+				0191344520DC41EC008BD758 /* CustomView.swift */,
 			);
 			path = Keepify;
 			sourceTree = "<group>";
@@ -71,6 +80,7 @@
 			buildConfigurationList = 0191343E20DBFE1D008BD758 /* Build configuration list for PBXNativeTarget "Keepify" */;
 			buildPhases = (
 				0191342A20DBFE1C008BD758 /* Sources */,
+				0191344720DC8954008BD758 /* Build Number */,
 				0191342B20DBFE1C008BD758 /* Frameworks */,
 				0191342C20DBFE1C008BD758 /* Resources */,
 			);
@@ -95,6 +105,11 @@
 				TargetAttributes = {
 					0191342D20DBFE1C008BD758 = {
 						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -121,6 +136,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0191344420DC03C2008BD758 /* custom.css in Resources */,
 				0191343620DBFE1D008BD758 /* Assets.xcassets in Resources */,
 				0191343920DBFE1D008BD758 /* Main.storyboard in Resources */,
 			);
@@ -128,13 +144,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0191344720DC8954008BD758 /* Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0191342A20DBFE1C008BD758 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0191343420DBFE1C008BD758 /* ViewController.swift in Sources */,
+				0191344620DC41EC008BD758 /* CustomView.swift in Sources */,
 				0191343220DBFE1C008BD758 /* AppDelegate.swift in Sources */,
+				0191344220DBFEBE008BD758 /* CustomWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
